@@ -24,13 +24,20 @@ const userSchema = new mongoose.Schema(
       minlength: [6, "password should contain more than 6 characters"],
       select: false,
     },
+    systemUser: {
+      type: Boolean,
+      default: false,
+      immutable: true,
+      select: false,
+    },
   },
+
   {
     timestamps: true,
   },
 );
 
-userSchema.pre("save", async function (next) {
+userSchema.pre("save", async function () {
   if (!this.isModified("password")) {
     return;
   }

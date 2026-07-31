@@ -7,7 +7,7 @@ function connectToDB() {
   mongoose
     .connect(process.env.MONGO_URI)
     .then(() => {
-      console.log("Server is connected");
+      console.log("Database is connected");
     })
     .catch((err) => {
       console.log("Error connecting to DB");
